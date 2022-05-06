@@ -1,0 +1,22 @@
+html{
+    font-size: 62.4%;
+}
+body{
+    box-sizing: border-box;
+    text-decoration: none;
+    width: 100vw;
+    height: 100vh;
+}
+img{
+    width: 3rem;
+}
+.links a{
+    font-size: calc(1vw + 5px);
+}
+header h1{
+    font-size: calc(1vw + 20px);
+}
+
+header h2{
+    font-size: calc(1vw + 15px)
+}
