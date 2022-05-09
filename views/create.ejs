@@ -5,14 +5,15 @@
     <%- include('./partials/header.ejs') %>
     <main>
         <div>
-        <form action="">
+        <form action="/blogs" method="POST">
             <label  for="title"></label>
-            <input id="title" type="text" placeholder="title">
+            <input id="title" type="text" name = "title" required placeholder="title">
             <label for="content"></label>
-            <input id="content" type="textarea"  placeholder="content">
+            <textarea id="content" type="textarea" name = "content" required  placeholder="content">
+                </textarea>
             <label for="author"></label>
-            <input id="author" type="text" placeholder="author"></div>
-            <button type = "submit" id="CreateBlog">CreateBlog</button>
+            <input id="author" type="text" name = "author" required placeholder="author"></div>
+            <button>CreateBlog</button>
         </form>  
     </main> 
 </body> 

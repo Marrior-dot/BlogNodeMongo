@@ -3,8 +3,22 @@
     <%- include('./partials/head.ejs') %>
 <body>
     <%- include('./partials/header.ejs') %> 
-    <main>
-        <a href="/create"><h3>Write your Blog</h3></a>         
+    <main> 
+        <%if(blogC.length > 0) {%> 
+        <% let number = 1 %> s
+        <%for(let i = 0; i < blogC.length; i++){%> 
+    
+        <h2><%= number %></h2>
+        <h1><%= blogC[i].title %></h1>
+        <h3><%= blogC[i].content %></h3>
+        <p><%= blogC[i].author %></p>
+        <% number = number + 1 %> 
+            <% } %>
+        <% } else { %>
+            <p>No blogs to display</p>
+            <% } %> 
+        
+        <a href="/blogs/create"><h3>Write your Blog</h3></a> 
     </main>
     <%- include('./partials/footer.ejs') %> 
 </body> 

@@ -2,10 +2,6 @@ const mongo = require('mongoose');
 const Schem = mongo.Schema
 
 const blogSchem = new Schem({
-    number:{
-        type: Number,
-        required: true
-    },
     title:{
         type: String,
         required: true

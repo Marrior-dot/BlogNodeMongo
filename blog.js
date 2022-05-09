@@ -14,20 +14,71 @@ app.set('view engine','ejs')
 app.set('views','./views')
 app.use(express.static('public'))
 
-app.get('/', (req,res) => {
-    const blogPost = new blogs({
+//Permite visualizar os dados pelo express e retorná-los em formato json,
+//sem isso retorna um undefined
+app.use(express.urlencoded({extended:true}))
 
+app.get('/', (req,res) => {
+    /*
+    const blogPost = new blogs({
+        number : 0,
+        title: "First blog",
+        content: "My first blog content",
+        author: "Author of the blog"    
     })
 
-    res.render('index', {title: "Home Page",section: "THE BLOG", blogC: blogs})
+    //Async
+    blogPost.save()
+    .then((result) => {
+        res.send(result);
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+*/
+    res.redirect('blogs')
+    
+})
+
+app.get('/listOfBlogs', (req,res) => {
+    blogs.find()
+    .then((result) => {
+        res.send(result)
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 })
 
 app.get('/about', (req,res) => {
     res.render('about', {title: "About Page", section: "THE ABOUT"})
 })
 
-app.get('/create', (req,res) => {
+app.get('/blogs/create', (req,res) => {
     res.render('create', {title: "Writting Page", section: "THE WRITTING"})
+})
+
+app.get('/blogs', (req,res) =>{
+    blogs.find()
+    .then((result) => {
+        res.render('index', {title: "Home Page",section: "THE BLOG", blogC: result})
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
+})
+app.post('/blogs', (req,res) => {
+    console.log(req.body)
+    const newBlog = new blogs(req.body)
+
+    newBlog.save()
+    .then((result) => {
+        res.redirect('/')
+    })
+    .catch((err) => {
+        console.log(err)
+    })
 })
 
 app.get('/contact', (req,res) => {
