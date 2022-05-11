@@ -7,11 +7,12 @@
         <%if(blogC.length > 0) {%> 
         <% let number = 1 %> s
         <%for(let i = 0; i < blogC.length; i++){%> 
-    
+        <a href="/blogs/<%= blogC[i]._id %> ">
         <h2><%= number %></h2>
         <h1><%= blogC[i].title %></h1>
         <h3><%= blogC[i].content %></h3>
         <p><%= blogC[i].author %></p>
+        </a>
         <% number = number + 1 %> 
             <% } %>
         <% } else { %>

@@ -68,6 +68,19 @@ app.get('/blogs', (req,res) =>{
     })
 
 })
+
+app.get('/blogs/:id',(req,res) => {
+    const id = req.params.id
+    blogs.findById(id)
+    .then((result) => {
+        res.render('each',{ section:"Seção de cada Blog",title:"Detalhes do Blog", blogTitle:result.title, blogContent: result.content, blogAuthor: result.author  })
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+
+})
+
 app.post('/blogs', (req,res) => {
     console.log(req.body)
     const newBlog = new blogs(req.body)
